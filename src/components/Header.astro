@@ -1,0 +1,27 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
+---
+
+<header>
+	<nav class="flex gap-4 my-16">
+		<a href="/" class="hover:bg-blue-700">
+			<img
+				src="/wadie.JPG"
+				class="h-36 w-36 object-cover hover:-translate-y-1 hover:translate-x-1"
+				alt="textures"
+			/>
+		</a>
+
+		<div class="flex flex-col justify-between">
+			<div>
+				<h2 class="text-2xl font-medium"><a>{SITE_TITLE}</a></h2>
+				<p class="text-gray-600">a blog by Wadie Boumediene</p>
+			</div>
+			<div class="internal-links flex gap-2">
+				<HeaderLink href="/" class="hover:text-white hover:bg-blue-700">home</HeaderLink>
+				<HeaderLink href="/about" class="hover:text-white hover:bg-blue-700">about</HeaderLink>
+			</div>
+		</div>
+	</nav>
+</header>
