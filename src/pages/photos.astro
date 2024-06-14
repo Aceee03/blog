@@ -62,7 +62,7 @@ const posts = (await getCollection("blog")).sort(
 				<div class="flex flex-col gap-2">
 					{
 						firstRowImages.map((image, index) => (
-							<img key={index} src={image.src} />
+							<img src={image.src} />
 							<h4>{image.location} - <span class="font-bold">{image.date}</span></h4>
 						))
 					}
@@ -70,7 +70,7 @@ const posts = (await getCollection("blog")).sort(
 				<div class="flex flex-col gap-2">
 					{
 						secondRowImages.map((image, index) => (
-							<img key={index} src={image.src} />
+							<img src={image.src} />
 							<h4>{image.location} - <span class="font-bold">{image.date}</span></h4>
 						))
 					}
@@ -78,7 +78,7 @@ const posts = (await getCollection("blog")).sort(
 				<div class="flex flex-col gap-2">
 					{
 						thirdRowImages.map((image, index) => (
-							<img key={index} src={image.src} />
+							<img src={image.src} />
 							<h4>{image.location} - <span class="font-bold">{image.date}</span></h4>
 						))
 					}
