@@ -1,0 +1,90 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getCollection } from "astro:content";
+import HeaderLink from "../components/HeaderLink.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import {
+	imageData,
+	firstRowImages,
+	secondRowImages,
+	thirdRowImages,
+} from "../../public/images.js";
+
+const posts = (await getCollection("blog")).sort(
+	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
+);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body class="max-w-screen-xl m-auto px-4">
+		<nav class="flex gap-4 my-16 justify-center">
+			<a href="/" class="hover:bg-blue-700">
+				<img
+					src="/wadie.JPG"
+					class="h-36 w-36 object-cover hover:-translate-y-1 hover:translate-x-1"
+					alt="textures"
+				/>
+			</a>
+
+			<div class="flex flex-col justify-between">
+				<div>
+					<h2 class="text-2xl font-medium"><a>{SITE_TITLE}</a></h2>
+					<p class="text-gray-600">a blog by Wadie Boumediene</p>
+				</div>
+				<div class="internal-links flex gap-2">
+					<HeaderLink
+						href="/"
+						class="hover:text-white hover:bg-blue-700"
+						>home</HeaderLink
+					>
+					<HeaderLink
+						href="/photos"
+						class="hover:text-white hover:bg-blue-700"
+						>photos</HeaderLink
+					>
+					<HeaderLink
+						href="/about"
+						class="hover:text-white hover:bg-blue-700"
+						>about</HeaderLink
+					>
+				</div>
+			</div>
+		</nav>
+		<main>
+			<section class="flex flex-col md:flex-row justify-center gap-2">
+				<div class="flex flex-col gap-2">
+					{
+						firstRowImages.map((image, index) => (
+							<img key={index} src={image.src} />
+							<h4>{image.location} - <span class="font-bold">{image.date}</span></h4>
+						))
+					}
+				</div>
+				<div class="flex flex-col gap-2">
+					{
+						secondRowImages.map((image, index) => (
+							<img key={index} src={image.src} />
+							<h4>{image.location} - <span class="font-bold">{image.date}</span></h4>
+						))
+					}
+				</div>
+				<div class="flex flex-col gap-2">
+					{
+						thirdRowImages.map((image, index) => (
+							<img key={index} src={image.src} />
+							<h4>{image.location} - <span class="font-bold">{image.date}</span></h4>
+						))
+					}
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
